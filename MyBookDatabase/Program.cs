@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using MyBookDatabase.Models;
+using MyBookDatabase.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +11,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options => {
 	options.UseSqlServer(builder.Configuration.GetConnectionString("BookDbConnection"));
 });
 
+builder.Services.AddScoped<AuthorService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

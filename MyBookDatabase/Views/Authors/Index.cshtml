@@ -1,0 +1,18 @@
+﻿@using MyBookDatabase.DTO
+@model IEnumerable<AuthorDTO>
+<h1>List of authors</h1>
+<a class="btn btn-primary my-2" asp-action="Create">Create</a>
+@foreach (var author in Model) {
+	<div class="border border-dark p-2">
+		<h5>@author.Name</h5>
+		<p>@author.DateOfBirth.ToShortDateString() - @author.DateOfDeath</p>
+		<p>@author.Bio</p>
+		@foreach (var book in author.Books) {
+			<p>@book.Title (@book.PublicationDate.ToShortDateString())</p>
+		}
+		<a class="btn btn-warning" asp-action="Update" asp-route-id="@author.Id">Edit</a>
+		<form method="post">
+			<button type="submit" class="btn btn-danger" asp-action="Delete" asp-route-id="@author.Id">Delete</button>
+		</form>
+	</div>
+}
