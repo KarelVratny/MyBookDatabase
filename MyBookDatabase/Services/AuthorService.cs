@@ -20,6 +20,22 @@ namespace MyBookDatabase.Services {
 			await _dbContext.Authors.AddAsync(DtoToModel(newAuthor));
 			await _dbContext.SaveChangesAsync();
 		}
+		public async Task<AuthorDTO> GetByIdAsync(int id) {
+			var author = await _dbContext.Authors.FirstOrDefaultAsync(author => author.Id == id);
+			if (author == null) {
+				return null;
+			}
+			return ModelToDto(author);
+		}
+		public async Task UpdateAsync(int id, AuthorDTO authorToEdit) {
+			_dbContext.Update(DtoToModel(authorToEdit));
+			await _dbContext.SaveChangesAsync();
+		}
+		internal async Task DeleteAsync(int id) {
+			var authorToDelete = await _dbContext.Authors.FirstOrDefaultAsync(author => author.Id == id);
+			_dbContext.Authors.Remove(authorToDelete);
+			await _dbContext.SaveChangesAsync();
+		}
 		private Author DtoToModel(AuthorDTO item) {
 			return new Author() {
 				Id = item.Id,

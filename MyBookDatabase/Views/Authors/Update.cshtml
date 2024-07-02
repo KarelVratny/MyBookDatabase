@@ -1,8 +1,8 @@
 ﻿@using MyBookDatabase.DTO
 @model AuthorDTO
 <div>
-	<h4>Create a new author</h4>
-	<form asp-action="Create">
+	<h4>Update an author</h4>
+	<form asp-action="Update">
 		<div class="form-group">
 			<label asp-for="Name"></label>
 			<input type="text" asp-for="Name" class="form-control" required />
@@ -20,7 +20,7 @@
 			<textarea asp-for="Bio" class="form-control" required></textarea>
 		</div>
 		<div>
-			<input class="btn btn-success" type="submit" value="Create" />
+			<input class="btn btn-success" type="submit" value="Update" />
 		</div>
 	</form>
 </div> 

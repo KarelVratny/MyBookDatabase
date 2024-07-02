@@ -1,4 +1,5 @@
 ﻿using MyBookDatabase.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace MyBookDatabase.DTO {
 	public class AuthorDTO {
