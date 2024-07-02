@@ -5,6 +5,6 @@
 		public string Bio { get; set; }
 		public DateTime DateOfBirth { get; set; }
 		public DateTime? DateOfDeath { get; set; }
-		public ICollection<Book> Books { get; set; }
+		public ICollection<Book> Books { get; set; } = new List<Book>();
 	}
 }
