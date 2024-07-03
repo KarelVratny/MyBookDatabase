@@ -20,6 +20,11 @@ namespace MyBookDatabase.Services {
 			_dbContext.Books.Update(bookToUpgrade);
 			await _dbContext.SaveChangesAsync();
 		}
+		public async Task DeleteAsync(int id) {
+			var bookToDelete = _dbContext.Books.FirstOrDefault(book => book.Id == id);
+			_dbContext.Books.Remove(bookToDelete);
+			_dbContext.SaveChanges();
+		}
 		public async Task<BooksDropdownViewModel> GetNewBooksDropdownsValues() {
 			var booksDropdownsData = new BooksDropdownViewModel() {
 				Authors = await _dbContext.Authors.OrderBy(author =>

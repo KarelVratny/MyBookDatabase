@@ -6,6 +6,7 @@ namespace MyBookDatabase.DTO {
 		public int Id { get; set; }
 		public string Title { get; set; }
 		public string Description { get; set; }
+		[DisplayName("Publication Date")]
 		public DateTime PublicationDate { get; set; }
 		public string Isbn { get; set; }
 		[DisplayName("Author")]

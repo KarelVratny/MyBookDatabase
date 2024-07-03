@@ -39,6 +39,10 @@ namespace MyBookDatabase.Controllers {
 			await _service.UpdateAsync(id, book);
 			return RedirectToAction("Index");
 		}
+		public async Task<IActionResult> DeleteAsync(int id) {
+			await _service.DeleteAsync(id);
+			return RedirectToAction("Index");
+		}
 		private async Task FillSelectsAsync() {
 			var booksDropdownsData = await _service.GetNewBooksDropdownsValues();
 			ViewBag.Authors = new SelectList(booksDropdownsData.Authors, "Id", "Name");

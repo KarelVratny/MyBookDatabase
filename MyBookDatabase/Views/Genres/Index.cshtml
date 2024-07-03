@@ -11,6 +11,7 @@
 		<a class="btn btn-warning" asp-action="Update" asp-route-id="@genre.Id">Edit</a>
 		<form method="post">
 			<button type="submit" class="btn btn-danger" asp-action="Delete" asp-route-id="@genre.Id">Delete</button>
+			<p>*Deleting a genre will result in deleting all associated books.</p>
 		</form>
 	</div>
 }

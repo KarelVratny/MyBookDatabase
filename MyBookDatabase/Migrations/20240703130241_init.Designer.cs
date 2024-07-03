@@ -12,7 +12,7 @@ using MyBookDatabase.Models;
 namespace MyBookDatabase.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240702183741_init")]
+    [Migration("20240703130241_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -70,8 +70,9 @@ namespace MyBookDatabase.Migrations
                     b.Property<int>("GenreId")
                         .HasColumnType("int");
 
-                    b.Property<int>("Isbn")
-                        .HasColumnType("int");
+                    b.Property<string>("Isbn")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("PublicationDate")
                         .HasColumnType("datetime2");

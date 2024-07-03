@@ -5,7 +5,10 @@
 @foreach (var author in Model) {
 	<div class="border border-dark p-2">
 		<h5>@author.Name</h5>
-		<p>@author.DateOfBirth.ToShortDateString() - @(author.DateOfDeath.HasValue ? author.DateOfDeath.Value.ToShortDateString() : "N/A")</p>
+		<p>Born: @author.DateOfBirth.ToShortDateString()</p>
+		@if (author.DateOfDeath.HasValue) {
+			<p>Died: @author.DateOfDeath.Value.ToShortDateString()</p>
+		}
 		<p>@author.Bio</p>
 		@foreach (var book in author.Books) {
 			<p>@book.Title (@book.PublicationDate.ToShortDateString())</p>
@@ -13,6 +16,7 @@
 		<a class="btn btn-warning" asp-action="Update" asp-route-id="@author.Id">Edit</a>
 		<form method="post">
 			<button type="submit" class="btn btn-danger" asp-action="Delete" asp-route-id="@author.Id">Delete</button>
+			<p>*Deleting an author will result in deleting all associated books.</p>
 		</form>
 	</div>
 }
