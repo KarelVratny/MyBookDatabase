@@ -13,6 +13,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options => {
 
 builder.Services.AddScoped<AuthorService>();
 builder.Services.AddScoped<GenreService>();
+builder.Services.AddScoped<BookService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
