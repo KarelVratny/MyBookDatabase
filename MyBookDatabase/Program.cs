@@ -8,7 +8,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<ApplicationDbContext>(options => {
-	options.UseSqlServer(builder.Configuration.GetConnectionString("BookDbConnection"));
+	//options.UseSqlServer(builder.Configuration.GetConnectionString("BookDbConnection"));
+	options.UseSqlServer(builder.Configuration.GetConnectionString("MonsterBookDbConnection"));
 });
 
 builder.Services.AddScoped<AuthorService>();
