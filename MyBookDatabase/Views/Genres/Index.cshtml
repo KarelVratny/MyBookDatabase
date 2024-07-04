@@ -2,7 +2,7 @@
 @model IEnumerable<GenreDTO>
 <h1>List of genres</h1>
 <a class="btn btn-primary my-2" asp-action="Create">Create</a>
-@foreach (var genre in Model) {
+@foreach (var genre in Model.OrderBy(genre => genre.Name)) {
 	<div class="border border-dark p-2">
 		<h4>@genre.Name</h4>
 		<ul>
