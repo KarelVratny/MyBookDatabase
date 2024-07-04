@@ -77,7 +77,8 @@ namespace MyBookDatabase.Services {
 				PublicationDate = book.PublicationDate,
 				Isbn = book.Isbn,
 				AuthorName = book.Author.Name,
-				GenreName = book.Genre.Name,
+				AuthorId = book.Author.Id,
+				GenreName = book.Genre.Name
 			};
 		}
 	}

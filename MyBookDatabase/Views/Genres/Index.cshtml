@@ -7,7 +7,7 @@
 		<h4>@genre.Name</h4>
 		<ul>
 			@foreach (var book in genre.Books.OrderBy(book => book.Title)) {
-				<li>@book.Title by @book.Author.Name</li>
+				<li>@book.Title by <a asp-controller="Authors" asp-action="Details" asp-route-id="@book.Author.Id">@book.Author.Name</a></li>
 			}
 		</ul>
 		<a class="btn btn-warning" asp-action="Update" asp-route-id="@genre.Id">Edit</a>

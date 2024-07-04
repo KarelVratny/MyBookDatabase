@@ -8,6 +8,7 @@ namespace MyBookDatabase.ViewModels {
 		public DateTime PublicationDate { get; set; }
 		public string Isbn { get; set; }
 		public string AuthorName { get; set; }
+		public int AuthorId { get; set; }
 		public string GenreName { get; set; }
 	}
 }

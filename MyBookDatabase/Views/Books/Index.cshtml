@@ -8,8 +8,8 @@
 </div>
 @foreach (var item in Model.OrderBy(item => item.Title)) {
 	<div class="border border-1 border-dark">
-		<h2>@item.Title</h2>
-		<p>by @item.AuthorName</p>
+		<h4>@item.Title</h4>
+		<p>by <a asp-controller="Authors" asp-action="Details" asp-route-id="@item.AuthorId">@item.AuthorName</a></p>
 		<p>Publication date: @item.PublicationDate.ToShortDateString()</p>
 		<p>ISBN-13: @item.Isbn</p>
 		<p>Genre: @item.GenreName</p>
