@@ -10,7 +10,7 @@ namespace MyBookDatabase.Services {
 			this._dbContext = dbContext;
 		}
 		public async Task<ICollection<GenreDTO>> GetAllAsync() {
-			var allGenres = await _dbContext.Genres.ToListAsync();
+			var allGenres = await _dbContext.Genres.Include(genre => genre.Books).ThenInclude(book => book.Author).ToListAsync();
 			var genreDtos = new List<GenreDTO>();
 			foreach (var item in allGenres) {
 				genreDtos.Add(ModelToDto(item));
@@ -48,7 +48,7 @@ namespace MyBookDatabase.Services {
 			return new GenreDTO() {
 				Id = item.Id,
 				Name = item.Name,
-				Books = _dbContext.Books.Where(book => book.GenreId == item.Id).ToList()
+				Books = item.Books
 			};
 		}
 	}

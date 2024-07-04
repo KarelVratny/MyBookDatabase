@@ -6,7 +6,7 @@
 	<div class="border border-dark p-2">
 		<h5>@genre.Name</h5>
 		@foreach (var book in genre.Books) {
-			<p>@book.Title @(book.Author != null ? book.Author.Name : "Unknown Author")</p>
+			<p>@book.Title by @book.Author.Name</p>
 		}
 		<a class="btn btn-warning" asp-action="Update" asp-route-id="@genre.Id">Edit</a>
 		<form method="post">
