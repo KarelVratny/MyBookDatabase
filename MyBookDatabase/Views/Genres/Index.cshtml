@@ -4,10 +4,12 @@
 <a class="btn btn-primary my-2" asp-action="Create">Create</a>
 @foreach (var genre in Model) {
 	<div class="border border-dark p-2">
-		<h5>@genre.Name</h5>
-		@foreach (var book in genre.Books) {
-			<p>@book.Title by @book.Author.Name</p>
-		}
+		<h4>@genre.Name</h4>
+		<ul>
+			@foreach (var book in genre.Books.OrderBy(book => book.Title)) {
+				<li>@book.Title by @book.Author.Name</li>
+			}
+		</ul>
 		<a class="btn btn-warning" asp-action="Update" asp-route-id="@genre.Id">Edit</a>
 		<form method="post">
 			<button type="submit" class="btn btn-danger" asp-action="Delete" asp-route-id="@genre.Id">Delete</button>

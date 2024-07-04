@@ -4,15 +4,18 @@
 <a class="btn btn-primary my-2" asp-action="Create">Create</a>
 @foreach (var author in Model) {
 	<div class="border border-dark p-2">
-		<h5>@author.Name</h5>
-		<p>Born: @author.DateOfBirth.ToShortDateString()</p>
+		<h4>@author.Name</h4>
+		<h6>Born: @author.DateOfBirth.ToShortDateString()</h6>
 		@if (author.DateOfDeath.HasValue) {
-			<p>Died: @author.DateOfDeath.Value.ToShortDateString()</p>
+			<h6>Died: @author.DateOfDeath.Value.ToShortDateString()</h6>
 		}
 		<p>@author.Bio</p>
-		@foreach (var book in author.Books) {
-			<p>@book.Title (@book.PublicationDate.ToString("yyyy"))</p>
-		}
+		<h6>Books:</h6>
+		<ul>
+			@foreach (var book in author.Books.OrderByDescending(book => book.PublicationDate)) {
+				<li>@book.Title (@book.PublicationDate.ToString("yyyy"))</li>
+			}
+		</ul>
 		<a class="btn btn-warning" asp-action="Update" asp-route-id="@author.Id">Edit</a>
 		<form method="post">
 			<button type="submit" class="btn btn-danger" asp-action="Delete" asp-route-id="@author.Id">Delete</button>
