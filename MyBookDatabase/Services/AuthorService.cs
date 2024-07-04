@@ -9,7 +9,7 @@ namespace MyBookDatabase.Services {
 			this._dbContext = dbContext;
 		}
 		public async Task<ICollection<AuthorDTO>> GetAllAsync() {
-			var allAuthors = await _dbContext.Authors.ToListAsync();
+			var allAuthors = await _dbContext.Authors.Include(author => author.Books).ToListAsync();
 			var authorDtos = new List<AuthorDTO>();
 			foreach (var item in allAuthors) {
 				authorDtos.Add(ModelToDto(item));

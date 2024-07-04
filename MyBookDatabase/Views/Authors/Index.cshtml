@@ -11,7 +11,7 @@
 		}
 		<p>@author.Bio</p>
 		@foreach (var book in author.Books) {
-			<p>@book.Title (@book.PublicationDate.ToShortDateString())</p>
+			<p>@book.Title (@book.PublicationDate.ToString("yyyy"))</p>
 		}
 		<a class="btn btn-warning" asp-action="Update" asp-route-id="@author.Id">Edit</a>
 		<form method="post">
