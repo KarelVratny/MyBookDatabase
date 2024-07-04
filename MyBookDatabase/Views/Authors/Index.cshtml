@@ -11,7 +11,7 @@
 <a class="btn btn-primary my-2" asp-action="Create">Create</a>
 @foreach (var author in Model.OrderBy(author => GetLastName(author.Name))) {
 	<div class="border border-dark p-2">
-		<h4>@author.Name</h4>
+		<h4><a asp-action="Details" asp-route-id="@author.Id">@author.Name</a></h4>
 		<h6>Born: @author.DateOfBirth.ToShortDateString()</h6>
 		@if (author.DateOfDeath.HasValue) {
 			<h6>Died: @author.DateOfDeath.Value.ToShortDateString()</h6>

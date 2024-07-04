@@ -13,7 +13,14 @@ namespace MyBookDatabase.Controllers {
 			var allAuthors = await _service.GetAllAsync();
 			return View(allAuthors);
 		}
-		public IActionResult Create() {
+        public async Task<IActionResult> Details(int id) {
+            var author = await _service.GetByIdAsync(id); 
+            if (author == null) {
+                return View("NotFound");
+            }
+            return View(author);
+        }
+        public IActionResult Create() {
 			return View();
 		}
 		[HttpPost]

@@ -1,0 +1,22 @@
+﻿@using MyBookDatabase.DTO
+@model AuthorDTO
+
+<div class="border border-dark p-2">
+	<h4>@Model.Name</h4>
+	<h6>Born: @Model.DateOfBirth.ToShortDateString()</h6>
+	@if (Model.DateOfDeath.HasValue) {
+		<h6>Died: @Model.DateOfDeath.Value.ToShortDateString()</h6>
+	}
+	<p>@Model.Bio</p>
+	<h6>Books:</h6>
+	<ul>
+		@foreach (var book in Model.Books.OrderByDescending(book => book.PublicationDate)) {
+			<li>@book.Title (@book.PublicationDate.ToString("yyyy"))</li>
+		}
+	</ul>
+	<a class="btn btn-warning" asp-action="Update" asp-route-id="@Model.Id">Edit</a>
+	<form method="post">
+		<button type="submit" class="btn btn-danger" asp-action="Delete" asp-route-id="@Model.Id">Delete</button>
+		<p>*Deleting an author will result in deleting all associated books.</p>
+	</form>
+</div>

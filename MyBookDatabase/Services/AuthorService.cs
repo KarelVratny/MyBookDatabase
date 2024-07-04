@@ -21,7 +21,7 @@ namespace MyBookDatabase.Services {
 			await _dbContext.SaveChangesAsync();
 		}
 		public async Task<AuthorDTO> GetByIdAsync(int id) {
-			var author = await _dbContext.Authors.FirstOrDefaultAsync(author => author.Id == id);
+			var author = await _dbContext.Authors.Include(author => author.Books).FirstOrDefaultAsync(author => author.Id == id);
 			if (author == null) {
 				return null;
 			}
