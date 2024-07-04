@@ -48,7 +48,7 @@ namespace MyBookDatabase.Services {
 			return new GenreDTO() {
 				Id = item.Id,
 				Name = item.Name,
-				Books = item.Books
+				Books = _dbContext.Books.Where(book => book.GenreId == item.Id).ToList()
 			};
 		}
 	}
